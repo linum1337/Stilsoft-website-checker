@@ -50,7 +50,7 @@ def img_and_warranty(cur_url):
     bs_meal = BeautifulSoup(req.text, 'lxml')
     warranty = str(bs_meal.find('li', string=re.compile('срок службы'))).split()[-2]
     img = str(bs_meal.find(class_='imgCont')).split()[-1]
-    if int(warranty) >= 7:
+    if int(warranty) <= 7:
         results.write(f"URL: {cur_url} | WARRANTY: {warranty} | Срок службы менее 7 лет! \n")
     if img == "None":
         results.write(f"URL: {cur_url} | IMAGE: {img} | Нет изображения! \n")
